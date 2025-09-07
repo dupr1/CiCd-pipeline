@@ -22,15 +22,15 @@ jobs:
       - name: Build Docker image
         run: docker build -t my-login-app .
 
-      - name: Show container user
+      - name: Show container user (clean output)
         run: |
-          docker run -d --name test-container my-login-app tail -f /dev/null
+          container_id=$(docker run -d --name test-container my-login-app tail -f /dev/null)
 
-          echo "User running inside container:"
-          docker exec test-container whoami
+           echo "Container is running as user: $(docker exec $container_id whoami)"
 
-          docker stop test-container
-          docker rm test-container
+          docker stop $container_id > /dev/null
+           docker rm $container_id > /dev/null
+
 
   deploy:
     runs-on: ubuntu-latest
