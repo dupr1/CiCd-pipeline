@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In — MyApp</title>
+  <style>
+    /* Reset-ish */
+    :root{
+      --bg1: #0f172a; /* dark navy */
+      --bg2: #0b1220;
+      --card: rgba(255,255,255,0.06);
+      --accent: linear-gradient(135deg,#7c3aed 0%,#06b6d4 100%);
+      --glass: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.7);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(800px 600px at 10% 10%, rgba(124,58,237,0.12), transparent 10%),
+                  radial-gradient(700px 500px at 90% 90%, rgba(6,182,212,0.09), transparent 10%),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    .container{
+      width:100%;
+      max-width:980px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+    }
+
+    .brand {
+      padding:48px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .brand h1{
+      margin:0 0 12px 0;
+      font-size:28px;
+      letter-spacing:-0.02em;
+    }
+    .brand p{margin:0; color:var(--muted)}
+
+    .card{
+      padding:28px;
+      border-radius:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+      box-shadow: 0 12px 30px rgba(2,6,23,0.7);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .logo {
+      width:56px; height:56px;
+      border-radius:12px;
+      background: var(--accent);
+      display:inline-flex; align-items:center; justify-content:center;
+      font-weight:700; color:white; font-size:20px;
+      box-shadow: 0 6px 18px rgba(124,58,237,0.18);
+    }
+
+    form{display:flex; flex-direction:column; gap:14px}
+
+    label{font-size:13px; color:rgba(230,238,248,0.9)}
+    input[type="email"], input[type="password"]{
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02); color:inherit; outline:none; font-size:15px;
+      transition: box-shadow .15s ease, transform .06s ease;
+    }
+    input:focus{box-shadow:0 6px 18px rgba(12,20,40,0.6); transform:translateY(-1px)}
+
+    .row{display:flex; gap:12px; align-items:center}
+    .checkbox{display:flex; align-items:center; gap:8px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px; border-radius:12px; border:0; cursor:pointer; font-weight:600;
+      background: linear-gradient(90deg,#7c3aed,#06b6d4);
+      color:white; font-size:15px; box-shadow: 0 8px 20px rgba(7,9,27,0.6);
+    }
+
+    .alt-actions{display:flex; justify-content:space-between; align-items:center; margin-top:6px}
+    .link{color:#cfeffd; text-decoration:none; font-size:14px}
+
+    .socials{display:flex; gap:10px}
+    .social-btn{flex:1; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted); font-weight:600; cursor:pointer}
+
+    .muted{color:rgba(230,238,248,0.7); font-size:14px}
+
+    footer.note{margin-top:18px; font-size:13px; color:rgba(230,238,248,0.55)}
+
+    /* small screens */
+    @media (max-width:900px){
+      .container{grid-template-columns:1fr; padding:0}
+      .brand{order:2}
+    }
+
+    /* helper small icon */
+    .eye{cursor:pointer; user-select:none}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="brand card">
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:18px">
+        <div class="logo">MA</div>
+        <div>
+          <h1>MyApp</h1>
+          <p class="muted">Smart, fast and secure — sign in to continue.</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top:6px;margin-bottom:8px">Welcome back 👋</h2>
+      <p class="muted">Enter your details to access your account. If you don’t have an account yet, click <a class="link" href="#">Sign up</a>.</p>
+
+      <div style="margin-top:20px">
+        <h3 style="margin:0 0 8px 0">Why people love MyApp</h3>
+        <ul style="margin:0;padding-left:18px;color:var(--muted)">
+          <li>Easy to use interface</li>
+          <li>Secure authentication</li>
+          <li>Fast performance</li>
+        </ul>
+      </div>
+
+      <footer class="note">Tip: This page is static HTML — to make it log in, add a backend endpoint and set the form <code>action</code>.</footer>
+    </section>
+
+    <aside class="card" aria-labelledby="signin-heading">
+      <h2 id="signin-heading" style="margin:0 0 6px 0">Sign in to your account</h2>
+      <p class="muted" style="margin-top:0">Use your email and password below.</p>
+
+      <!-- Form: change action to your server endpoint, e.g. /auth/login -->
+      <form id="loginForm" action="#" method="POST" onsubmit="return handleSubmit(event)">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@domain.com" required autocomplete="email">
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <div style="position:relative">
+            <input id="password" name="password" type="password" placeholder="Enter your password" required autocomplete="current-password">
+            <span class="eye" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(230,238,248,0.6);font-size:13px" onclick="togglePassword()">Show</span>
+          </div>
+        </div>
+
+        <div class="row" style="justify-content:space-between">
+          <label class="checkbox"><input type="checkbox" name="remember"> Remember me</label>
+          <a class="link" href="#">Forgot password?</a>
+        </div>
+
+        <button class="btn" type="submit">Sign in</button>
+
+        <div class="alt-actions">
+          <div class="muted">Or continue with</div>
+          <div class="socials" style="width:54%">
+            <button type="button" class="social-btn" onclick="alert('Pretend sign in with Google')">Google</button>
+            <button type="button" class="social-btn" onclick="alert('Pretend sign in with GitHub')">GitHub</button>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;font-size:13px;color:rgba(230,238,248,0.6)">Don't have an account? <a class="link" href="#">Create one</a></div>
+      </form>
+
+      <footer style="margin-top:18px;color:rgba(230,238,248,0.6);font-size:13px">Security note: this form is static — if you wire it to a server, make sure to use HTTPS and never store plaintext passwords.</footer>
+    </aside>
+  </main>
+
+  <script>
+    function togglePassword(){
+      const p = document.getElementById('password');
+      const eye = event?.target || null;
+      if (p.type === 'password'){
+        p.type = 'text';
+        if(eye) eye.textContent = 'Hide';
+      } else {
+        p.type = 'password';
+        if(eye) eye.textContent = 'Show';
+      }
+    }
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = document.getElementById('loginForm');
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+
+      // Basic validation example
+      if (!payload.email || !payload.password){
+        alert('Please fill email and password');
+        return false;
+      }
+
+      // For demo: show a friendly message. Replace with real request (fetch) to your backend.
+      alert('Pretend submitting to server:\n' + JSON.stringify(payload));
+      return false; // prevent actual submit
+    }
+  </script>
+</body>
+</html>
