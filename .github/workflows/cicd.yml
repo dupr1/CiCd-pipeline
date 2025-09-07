@@ -18,8 +18,19 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v3
+
       - name: Build Docker image
         run: docker build -t my-login-app .
+
+      - name: Show container user
+        run: |
+          docker run -d --name test-container my-login-app tail -f /dev/null
+
+          echo "User running inside container:"
+          docker exec test-container whoami
+
+          docker stop test-container
+          docker rm test-container
 
   deploy:
     runs-on: ubuntu-latest
