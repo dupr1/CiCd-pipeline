@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run tests
-        run: echo "✅ Tests passed (dummy test)"
+        run: echo "Tests passed"
 
   build:
     runs-on: ubuntu-latest
@@ -22,7 +22,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t my-login-app .
 
-      - name: Show container user (clean output)
+      - name: Show container user
         run: |
           container_id=$(docker run -d --name test-container my-login-app tail -f /dev/null)
 
@@ -37,4 +37,4 @@ jobs:
     needs: build
     steps:
       - name: Deploy to staging
-        run: echo "🚀 Pretend deployment to staging"
+        run: echo "Pretend deployment to staging"
