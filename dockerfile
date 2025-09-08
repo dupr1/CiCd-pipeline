@@ -1,5 +1,3 @@
-FROM nginx:alpine
-RUN adduser -D user1 
+FROM nginx:alpine 
 COPY login.html /usr/share/nginx/html/index.html
-USER user1
 EXPOSE 80
